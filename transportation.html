@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transportation &amp; Parking | ASU Sun Devils Gameday Hub</title>
+  <meta name="description" content="Parking lots, prices, accessible options, and Valley Metro light rail routes to Mountain America Stadium for ASU Sun Devils football gamedays in Tempe.">
+  <!-- Inter (body) and Oswald (headings) from Google Fonts.
+       display=swap shows the fallback until the web font loads.
+       This page also has the Google Maps embed (see below). -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Oswald:wght@600;700&display=optional">
+
+  <!-- Favicon SVG brand mark, stays crisp on any screen -->
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="index.html">
+        <!-- Brand logo, inline SVG trident, decorative and aria hidden, gold via currentColor -->
+        <svg class="pitchfork" viewBox="-6 -8 36 36" fill="none" stroke="currentColor"
+             stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+             aria-hidden="true" focusable="false">
+          <!-- Outer circle -->
+          <circle cx="12" cy="10" r="16"/>
+          <!-- Three caps on the tine tips -->
+          <path d="M4.5 4 L7.5 4 L6 1 Z"/>
+          <path d="M10.5 3 L13.5 3 L12 0 Z"/>
+          <path d="M16.5 4 L19.5 4 L18 1 Z"/>
+          <!-- Tines, bowl, and handle -->
+          <path d="M6 4v5M12 3v6M18 4v5"/>
+          <path d="M6 9a6 6 0 0 0 12 0"/>
+          <path d="M12 9v11"/>
+        </svg>
+        <span>Sun Devils Gameday Hub</span>
+      </a>
+
+      <!-- Menu button. This checkbox opens the menu, so it needs a name and
+           must stay visible to screen readers. -->
+      <input class="nav-toggle-checkbox" type="checkbox" id="nav-toggle" aria-label="Open main menu">
+      <label class="nav-toggle" for="nav-toggle"><span aria-hidden="true">☰</span><span class="nav-toggle-label"> Menu</span></label>
+
+      <nav class="main-nav" aria-label="Primary">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="traditions.html">Gameday Traditions</a></li>
+          <li><a href="stadium.html">Stadium Guide &amp; Policies</a></li>
+          <!-- Transportation & Parking -->
+          <li><a href="transportation.html" aria-current="page">Transportation &amp; Parking</a></li>
+          <li><a href="schedule.html">Fall Schedule</a></li>
+          <li><a href="faq.html">FAQ &amp; Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main content. tabindex="-1" lets the skip link move focus here, so
+       keyboard users land in the content. -->
+  <main id="main" tabindex="-1">
+    <div class="container">
+      <section aria-labelledby="page-title">
+        <h1 class="section-title" id="page-title">Transportation &amp; Parking</h1>
+        <p class="updated"><strong>Last updated:</strong> August 28, 2026 | prices and lot availability change per event; confirm before you drive.</p>
+        <p class="lede">Getting to Mountain America Stadium in Tempe is easy whether you drive or ride the Valley Metro light rail. Compare parking lots or skip the traffic and hop off the train steps from campus.</p>
+      </section>
+
+      <section aria-labelledby="parking-title">
+        <h2 class="section-title" id="parking-title">Parking Lots</h2>
+        <div class="table-wrap">
+          <table class="data">
+            <caption>Gameday parking options near campus (typical, per-event)</caption>
+            <thead>
+              <tr>
+                <th scope="col">Lot / structure</th>
+                <th scope="col">Approx. distance</th>
+                <th scope="col">Typical price</th>
+                <th scope="col">Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Rural Road Structure</th>
+                <td>5-min walk</td>
+                <td>$20&ndash;$40</td>
+                <td>Closest covered option; sells out early.</td>
+              </tr>
+              <tr>
+                <th scope="row">Packard Drive Lot</th>
+                <td>10-min walk</td>
+                <td>$15&ndash;$25</td>
+                <td>Popular tailgate lot; opens hours before kickoff.</td>
+              </tr>
+              <tr>
+                <th scope="row">Apache Blvd Garages</th>
+                <td>12-min walk</td>
+                <td>$10&ndash;$20</td>
+                <td>Good value; near a light rail stop.</td>
+              </tr>
+              <tr>
+                <th scope="row">Accessible (ADA) parking</th>
+                <td>Varies</td>
+                <td>Standard rate</td>
+                <td>Valid disability placard or plate required; arrive early.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section aria-labelledby="lightrail-title">
+        <h2 class="section-title" id="lightrail-title">Valley Metro Light Rail</h2>
+        <p>The light rail drops you within a short walk of the stadium and avoids parking altogether. These stops are closest to campus.</p>
+        <div class="table-wrap">
+          <table class="data">
+            <caption>Nearest light rail stops to Mountain America Stadium</caption>
+            <thead>
+              <tr>
+                <th scope="col">Station</th>
+                <th scope="col">Line</th>
+                <th scope="col">Walk to stadium</th>
+                <th scope="col">Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Veterans Way / College Ave</th>
+                <td>Valley Metro Rail</td>
+                <td>8 min</td>
+                <td>Closest stop; busiest on gameday.</td>
+              </tr>
+              <tr>
+                <th scope="row">University Dr / Rural Rd</th>
+                <td>Valley Metro Rail</td>
+                <td>12 min</td>
+                <td>Good alternate to avoid crowds.</td>
+              </tr>
+              <tr>
+                <th scope="row">Dorsey / Apache Blvd</th>
+                <td>Valley Metro Rail</td>
+                <td>15 min</td>
+                <td>Near east-side parking garages.</td>
+              </tr>
+              <tr>
+                <th scope="row">Tempe Transportation Center</th>
+                <td>Bus + Rail hub</td>
+                <td>10 min</td>
+                <td>Connects regional bus routes to the rail line.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Stadium location map -->
+      <section aria-labelledby="map-title">
+        <h2 class="section-title" id="map-title">Find the Stadium on the Map</h2>
+
+        <!-- Plain-text address, so the location works even if the map fails to load -->
+        <address class="map-alt">
+          <strong>Mountain America Stadium</strong><br>
+          500 E Veterans Way, Tempe, AZ 85281<br>
+          <strong>Nearest cross streets:</strong> Veterans Way &amp; College Ave<br>
+          <strong>Closest parking:</strong> Rural Road Structure, Packard Drive Lot<br>
+          <strong>Closest light rail:</strong> Veterans Way / College Ave stop
+        </address>
+
+        <!-- Direct link to the map, usable without the embed -->
+        <p>
+          <a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Mountain+America+Stadium+Tempe+AZ"
+             target="_blank" rel="noopener noreferrer">
+            View Mountain America Stadium on Google Maps<span class="sr-only"> (opens in a new tab)</span>
+          </a>
+        </p>
+
+        <!-- Sized wrapper reserves space so the page does not jump on load -->
+        <div class="map-embed">
+          <!-- Google Maps embed, titled and lazy-loaded -->
+          <iframe
+            src="https://www.google.com/maps?q=Mountain+America+Stadium,+Tempe,+AZ&amp;output=embed"
+            title="Map showing the location of Mountain America Stadium in Tempe, Arizona"
+            width="600" height="450"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+
+        <!-- Note the embed loads content from Google -->
+        <p class="map-note">
+          <small>Note: the map above loads content from Google.</small>
+        </p>
+      </section>
+
+      <section aria-labelledby="tips-title">
+        <h2 class="section-title" id="tips-title">Getting-There Tips</h2>
+        <!-- Tip card icons are inline SVG, decorative and aria hidden, so CSS
+             can tint them via currentColor. -->
+        <div class="card-grid">
+          <!-- Transit pass tip, decorative fare card icon -->
+          <article class="card">
+            <h3>
+              <svg class="card-icon" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="2"
+                   stroke-linecap="round" stroke-linejoin="round"
+                   aria-hidden="true" focusable="false">
+                <rect x="3" y="6" width="18" height="12" rx="2"/>
+                <path d="M3 10h18"/>
+                <path d="M7 15h4"/>
+              </svg>
+              Buy Transit Passes Ahead
+            </h3>
+            <p>Load a Valley Metro pass on the app before you go so you're not stuck at a ticket machine in a gameday crowd.</p>
+          </article>
+          <!-- Rideshare tip, decorative map pin icon -->
+          <article class="card">
+            <h3>
+              <svg class="card-icon" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="2"
+                   stroke-linecap="round" stroke-linejoin="round"
+                   aria-hidden="true" focusable="false">
+                <path d="M12 21s7-6.3 7-11a7 7 0 0 0-14 0c0 4.7 7 11 7 11z"/>
+                <circle cx="12" cy="10" r="2.5"/>
+              </svg>
+              Rideshare Drop-Off Zones
+            </h3>
+            <p>Designated rideshare zones sit a few blocks out. Walking a bit past the congestion is usually faster than a curbside pickup.</p>
+          </article>
+          <!-- Buffer time tip, decorative clock icon -->
+          <article class="card">
+            <h3>
+              <svg class="card-icon" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="2"
+                   stroke-linecap="round" stroke-linejoin="round"
+                   aria-hidden="true" focusable="false">
+                <circle cx="12" cy="12" r="9"/>
+                <path d="M12 7v5l3 2"/>
+              </svg>
+              Leave Buffer Time
+            </h3>
+            <p>Traffic and screening lines build fast. Plan to arrive at least an hour before kickoff for a relaxed entry.</p>
+          </article>
+        </div>
+        <p class="next-link"><a class="btn" href="schedule.html">Next: Fall Schedule</a></p>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <!-- Footer logo, larger copy of the header trident -->
+          <h2 class="footer-brand">
+            <svg class="footer-logo" viewBox="-6 -8 36 36" fill="none" stroke="currentColor"
+                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                 aria-hidden="true" focusable="false">
+              <circle cx="12" cy="10" r="16"/>
+              <path d="M4.5 4 L7.5 4 L6 1 Z"/>
+              <path d="M10.5 3 L13.5 3 L12 0 Z"/>
+              <path d="M16.5 4 L19.5 4 L18 1 Z"/>
+              <path d="M6 4v5M12 3v6M18 4v5"/>
+              <path d="M6 9a6 6 0 0 0 12 0"/>
+              <path d="M12 9v11"/>
+            </svg>
+            Sun Devils Gameday Hub
+          </h2>
+          <p>A community resource for ASU football gameday in Tempe, Arizona.</p>
+        </div>
+        <nav aria-label="Footer">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="traditions.html">Gameday Traditions</a></li>
+            <li><a href="stadium.html">Stadium Guide &amp; Policies</a></li>
+            <!-- Transportation & Parking -->
+            <li><a href="transportation.html">Transportation &amp; Parking</a></li>
+            <li><a href="schedule.html">Fall Schedule</a></li>
+            <li><a href="faq.html">FAQ &amp; Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+      <p class="disclaimer">
+        This is a student capstone project for educational purposes only. It is not affiliated with, endorsed by, or an official site of Arizona State University or Sun Devil Athletics. Always confirm policies, schedules, and parking on official sources before gameday.
+      </p>
+    </div>
+  </footer>
+</body>
+</html>

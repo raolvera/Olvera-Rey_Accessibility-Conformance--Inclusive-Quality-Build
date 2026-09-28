@@ -1,0 +1,197 @@
+<!--Boiler plate-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Page setup -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ &amp; Contact | ASU Sun Devils Gameday Hub</title>
+  <meta name="description" content="Frequently asked questions about ASU Sun Devils gameday: tickets, re-entry, weather, kids, and accessibility, plus a contact form to reach the hub.">
+
+  <!-- Inter (body) and Oswald (headings) from Google Fonts.
+       display=swap shows the fallback until the web font loads. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Oswald:wght@600;700&display=optional">
+
+  <!-- Favicon SVG brand mark, stays crisp on any screen -->
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Skip link for keyboard users -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container">
+      <!-- Logo -->
+      <a class="brand" href="index.html">
+        <!-- Brand logo, inline SVG trident, decorative and aria hidden, gold via currentColor -->
+        <svg class="pitchfork" viewBox="-6 -8 36 36" fill="none" stroke="currentColor"
+             stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+             aria-hidden="true" focusable="false">
+          <!-- Outer circle -->
+          <circle cx="12" cy="10" r="16"/>
+          <!-- Three caps on the tine tips -->
+          <path d="M4.5 4 L7.5 4 L6 1 Z"/>
+          <path d="M10.5 3 L13.5 3 L12 0 Z"/>
+          <path d="M16.5 4 L19.5 4 L18 1 Z"/>
+          <!-- Tines, bowl, and handle -->
+          <path d="M6 4v5M12 3v6M18 4v5"/>
+          <path d="M6 9a6 6 0 0 0 12 0"/>
+          <path d="M12 9v11"/>
+        </svg>
+        <span>Sun Devils Gameday Hub</span>
+      </a>
+
+      <!-- Menu button. This checkbox opens the menu, so it needs a name and
+           must stay visible to screen readers. -->
+      <input class="nav-toggle-checkbox" type="checkbox" id="nav-toggle" aria-label="Open main menu">
+      <label class="nav-toggle" for="nav-toggle"><span aria-hidden="true">☰</span><span class="nav-toggle-label"> Menu</span></label>
+
+      <!-- Nav links -->
+      <nav class="main-nav" aria-label="Primary">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="traditions.html">Gameday Traditions</a></li>
+          <li><a href="stadium.html">Stadium Guide &amp; Policies</a></li>
+          <!-- Transportation & Parking -->
+          <li><a href="transportation.html">Transportation &amp; Parking</a></li>
+          <li><a href="schedule.html">Fall Schedule</a></li>
+          <li><a href="faq.html" aria-current="page">FAQ &amp; Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main content. tabindex="-1" lets the skip link move focus here, so
+       keyboard users land in the content. -->
+  <main id="main" tabindex="-1">
+    <div class="container">
+      <!-- Page intro -->
+      <section aria-labelledby="page-title">
+        <h1 class="section-title" id="page-title">FAQ &amp; Contact</h1>
+        <p class="lede">Quick answers to the questions we hear most, plus a form to send us a note about anything gameday related.</p>
+      </section>
+
+      <!-- FAQ accordion -->
+      <section class="faq" aria-labelledby="faq-title">
+        <h2 class="section-title" id="faq-title">Frequently Asked Questions</h2>
+
+        <details>
+          <summary>Are tickets digital or paper?</summary>
+          <p>Tickets are almost always mobile/digital. Add them to your phone wallet and take a screenshot as a backup before you leave home.</p>
+        </details>
+
+        <details>
+          <summary>Can I leave and come back in?</summary>
+          <p>Most games are no re-entry. Once you exit, you generally can't be readmitted on the same ticket, so plan your trips out accordingly.</p>
+        </details>
+
+        <details>
+          <summary>What should I do about the heat?</summary>
+          <p>Early-season Tempe games can be very hot. Wear light colors, use sunscreen, and take advantage of shaded concourses and water stations inside.</p>
+        </details>
+
+        <details>
+          <summary>Is the stadium family and kid friendly?</summary>
+          <p>Yes. Children who occupy a seat need a ticket. Remember diaper bags must follow the clear-bag policy on the Stadium Guide page.</p>
+        </details>
+
+        <details>
+          <summary>Where do I find accessible parking and seating?</summary>
+          <p>Accessible (ADA) parking is available with a valid placard or plate arrive early. See the Transportation &amp; Parking page for lots and light rail options.</p>
+        </details>
+      </section>
+
+      <!-- Contact form -->
+      <section aria-labelledby="contact-title">
+        <h2 class="section-title" id="contact-title">Contact Us</h2>
+        <p class="form-note">This is a demo form for a student capstone. It validates in the browser but does not send messages unless connected to a form service.</p>
+
+        <!-- The required fields note comes before the inputs and is linked
+             to each required field with aria-describedby, so a screen reader
+             hears the rule first. The star is kept for sighted users, and the
+             required state is set in code with required, aria-required, and a
+             screen-reader-only word "required". -->
+        <form class="contact-form" action="#" method="post" novalidate>
+          <p class="form-note" id="required-note">
+            Fields marked <span class="req" aria-hidden="true">*</span> are required.
+          </p>
+
+          <div class="field">
+            <label for="name">Name <span class="req" aria-hidden="true">*</span><span class="sr-only"> (required)</span></label>
+            <input type="text" id="name" name="name" autocomplete="name" required aria-required="true" aria-describedby="required-note">
+          </div>
+
+          <div class="field">
+            <label for="email">Email <span class="req" aria-hidden="true">*</span><span class="sr-only"> (required)</span></label>
+            <input type="email" id="email" name="email" autocomplete="email" required aria-required="true" aria-describedby="required-note">
+          </div>
+
+          <div class="field">
+            <label for="topic">Topic</label>
+            <select id="topic" name="topic">
+              <option value="general">General question</option>
+              <option value="policies">Stadium policies</option>
+              <option value="parking">Parking &amp; transit</option>
+              <option value="schedule">Schedule</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="message">Message <span class="req" aria-hidden="true">*</span><span class="sr-only"> (required)</span></label>
+            <textarea id="message" name="message" rows="5" required aria-required="true" aria-describedby="required-note"></textarea>
+          </div>
+
+          <button type="submit" class="btn">Send Message</button>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <!-- Footer logo larger copy of the header trident -->
+          <h2 class="footer-brand">
+            <svg class="footer-logo" viewBox="-6 -8 36 36" fill="none" stroke="currentColor"
+                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                 aria-hidden="true" focusable="false">
+              <circle cx="12" cy="10" r="16"/>
+              <path d="M4.5 4 L7.5 4 L6 1 Z"/>
+              <path d="M10.5 3 L13.5 3 L12 0 Z"/>
+              <path d="M16.5 4 L19.5 4 L18 1 Z"/>
+              <path d="M6 4v5M12 3v6M18 4v5"/>
+              <path d="M6 9a6 6 0 0 0 12 0"/>
+              <path d="M12 9v11"/>
+            </svg>
+            Sun Devils Gameday Hub
+          </h2>
+          <p>A community resource for ASU football gameday in Tempe, Arizona.</p>
+        </div>
+        <!-- Footer nav -->
+        <nav aria-label="Footer">
+          <ul style="list-style:none;padding:0;margin:0;">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="traditions.html">Gameday Traditions</a></li>
+            <li><a href="stadium.html">Stadium Guide &amp; Policies</a></li>
+            <!-- Transportation & Parking -->
+            <li><a href="transportation.html">Transportation &amp; Parking</a></li>
+            <li><a href="schedule.html">Fall Schedule</a></li>
+            <li><a href="faq.html">FAQ &amp; Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+      <!-- Disclaimer -->
+      <p class="disclaimer">
+        This is a student capstone project for educational purposes only. It is not affiliated with, endorsed by, or an official site of Arizona State University or Sun Devil Athletics. Always confirm policies, schedules, and parking on official sources before gameday.
+      </p>
+    </div>
+  </footer>
+</body>
+</html>

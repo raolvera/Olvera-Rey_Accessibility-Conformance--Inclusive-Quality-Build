@@ -1,0 +1,1838 @@
+/*
+  styles.css
+  ASU Sun Devils Football Gameday Hub
+  Author: Rey Olvera
+  Course: GIT 515 Advanced Web Coding
+  Professor : Hillerman
+  Date: September 20, 2026, Module 4
+*/
+
+/* Cascade layers. This sets the order once. Later layers beat earlier ones,
+   no matter where a rule sits in the file. Order: tokens (variables), base
+   (element defaults), layout (page frame), components (the pieces). */
+@layer tokens, base, layout, components;
+
+@layer tokens {
+
+:root {
+
+  /* Brand colors */
+  --maroon:        #8c1d40;  
+  --maroon-dark:   #6a1531; 
+  --gold:          #ffc627;  
+  --gold-dark:     #e6b000; 
+
+  /* Neutrals */
+  --ink:           #1a1a1a; 
+  --paper:         #ffffff;  
+  --mist:          #f4f4f6;  
+  --line:          #d9d9de; 
+
+  /* Feedback colors */
+  --error:         #c62828;  
+  --error-dark:    #8e0000; 
+  --error-bg:      #fff5f5;  
+  --visited:       #5a0e28;  
+
+  /* Focus ring colors */
+  --focus:         #0b5fff;  
+  --focus-invert:  #ffffff;  
+
+  /* Font families The Fallback faces are defined at the bottom of this
+     file and are sized to match the web font, so the swap barely moves the
+     layout. Plain system fonts come last as a safety net. */
+  --font-body:     "Inter", "Inter Fallback", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-heading:  "Oswald", "Oswald Fallback", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+  /* Font sizes */
+  --text-sm:    0.875rem;               
+  --text-base:  1rem;                   
+  --text-lg:    1.1rem;                 
+  --text-xl:    1.25rem;                
+  --text-2xl:   1.6rem;                
+  --text-3xl:   2rem;                  
+  --text-hero:  clamp(1.8rem, 5vw, 3rem); 
+
+  /* Line heights */
+  --leading-tight: 1.2; 
+  --leading-body:  1.6; 
+
+  /* Spacing scale */
+  --space-xs:   0.25rem;  
+  --space-sm:   0.5rem;   
+  --space-md:   1rem;   
+  --space-lg:   1.25rem;  
+  --space-xl:   1.5rem;   
+  --space-2xl:  2.5rem;  
+  --space-3xl:  3rem;   
+
+  /* Grid gap alias, points at the base spacing step */
+  --gap: var(--space-lg);
+
+  /* Fluid spacing that scales with the viewport between a floor and a
+     ceiling, so spacing tightens on phones and opens up on desktops without
+     a media query. Used on main and section. */
+  --space-fluid-md: clamp(1rem, 0.6rem + 2vw, 1.75rem);
+  --space-fluid-lg: clamp(1.5rem, 1rem + 3vw, 3rem);
+  --space-fluid-xl: clamp(2rem, 1.2rem + 4vw, 4.5rem);
+
+  /* Smallest a grid column can get before the grid drops to fewer columns.
+     Based on where the text starts to feel cramped, around 15rem. */
+  --col-min:       15rem;   
+  --col-min-wide:  20rem;  
+
+  /* Shape and shadow */
+  --radius:      8px;                       
+  --radius-sm:   4px;                        
+  --radius-pill: 9999px;                    
+  --shadow:      0 2px 6px rgba(0, 0, 0, 0.12);   
+  --shadow-md:   0 4px 12px rgba(0, 0, 0, 0.16);  
+
+  /* Max-widths */
+  --max-width:  1100px;  
+  --max-form:    520px;  
+  --max-lede:    65ch;   
+  --max-hero-p:  42ch;  
+
+  /* Focus ring size */
+  --focus-width:  3px;   
+  --focus-offset: 2px;   
+
+
+  /* Component tokens component by editing its tokens here,
+     without touching the rules further down the file. */
+
+  /* nav */
+  --nav-bg:           var(--maroon);      
+  --nav-link-color:   var(--paper);     
+  --nav-link-hover:   var(--maroon-dark);   
+  --nav-active-bg:    var(--gold);          
+  --nav-active-color: var(--ink);         
+  --nav-border:       5px solid var(--gold);
+
+  /* card */
+  --card-bg:      var(--paper);           
+  --card-border:  1px solid var(--line);    
+  --card-radius:  var(--radius);        
+  --card-shadow:  var(--shadow);       
+  --card-padding: var(--space-lg);        
+
+  /* button */
+  --btn-bg:         var(--maroon);       
+  --btn-color:      var(--paper);        
+  --btn-hover-bg:   var(--maroon-dark);    
+  --btn-padding-y:  0.7rem;                
+  --btn-padding-x:  1.3rem;               
+  --btn-radius:     var(--radius);         
+  --btn-border:     2px solid transparent;  
+
+  /* table */
+  --tbl-head-bg:    var(--maroon);       
+  --tbl-head-color: var(--paper);         
+  --tbl-row-bg:     var(--mist);          
+  --tbl-caption:    var(--maroon);     
+  --tbl-cell-pad-y: 0.65rem;           
+  --tbl-cell-pad-x: 0.8rem;          
+
+  /* form field */
+  --field-border:         1px solid var(--line);   
+  --field-radius:         var(--radius);           
+  --field-focus-color:    var(--focus);           
+  --field-invalid-border: 2px solid var(--error);  
+  --field-invalid-bg:     var(--error-bg);         
+  --req-color:            var(--error);            
+
+  /* callout and the last updated stamp */
+  --callout-bg:     var(--mist);            
+  --callout-border: 4px solid var(--gold);  
+}
+
+} /* end @layer tokens */
+
+
+@layer base {
+
+/* Zero out default spacing and use border-box everywhere for predictable
+   sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Smooth in-page scrolling, keep text size steady on rotate, and always
+   reserve room for the scrollbar so page width stays consistent. */
+html {
+  scroll-behavior: smooth;
+  scrollbar-gutter: stable;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  font-size: 106.25%;
+}
+
+/* Default text and page background. overflow-x: hidden keeps the page from
+   scrolling sideways; wide tables scroll inside their own .table-wrap. */
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: var(--leading-body);
+  color: var(--ink);
+  background: var(--paper);
+  overflow-x: hidden;
+}
+
+/* Every heading shares Oswald and the same weight and color */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: var(--leading-tight);
+  color: var(--maroon);
+  letter-spacing: 0.01em;
+}
+
+/* Set heading sizes explicitly so browsers can't fall back to their own
+   defaults, which drift once the font is swapped */
+h1 { font-size: var(--text-hero); }
+h2 { font-size: var(--text-3xl); }
+h3 { font-size: var(--text-2xl); }
+h4 { font-size: var(--text-xl); }
+
+p {
+  margin-bottom: var(--space-md);
+}
+p:last-child {
+  margin-bottom: 0;
+}
+
+/* Indent lists enough that the bullets and numbers actually show */
+ul, ol {
+  padding-left: var(--space-xl);
+}
+
+li {
+  margin-bottom: var(--space-xs);
+}
+
+/* Keep media from spilling out of its container */
+img, video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Body links, maroon with a visible underline good for accessibility */
+a {
+  color: var(--maroon);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+/* Visited links go dark maroon instead of that default browser purple */
+a:visited {
+  color: var(--visited);
+}
+
+table {
+  border-collapse: collapse;
+}
+
+/* Keep sub/superscript from throwing off the line height */
+sub, sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+sup { top: -0.5em; }
+sub { bottom: -0.25em; }
+
+/* Reduced-motion preference. Turn off animations and smooth scroll. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Higher-contrast preference. Darker borders, a deeper tint, and a thicker
+   focus ring. Since the design runs on tokens, changing a few here re-skins
+   every component at once. */
+@media (prefers-contrast: more) {
+  :root {
+    --line:        #6b6b73;  
+    --card-border: 1px solid var(--ink);
+    --mist:        #ececf0;   
+    --focus-width: 4px;       
+  }
+  /* Make sure buttons and callout accents don't rely on subtle edges. */
+  .btn,
+  .callout,
+  .stat,
+  .spotlight {
+    border-color: var(--ink);
+  }
+}
+
+} /* end @layer base */
+
+
+@layer layout {
+
+/* Center the content and cap its width on big screens. It uses logical
+   properties so it follows the writing direction, and min() shrinks the side
+   padding on very narrow screens. */
+.container {
+  inline-size: 100%;
+  max-inline-size: var(--max-width);
+  margin-inline: auto;
+  padding-inline: min(var(--space-md), 5vw);
+}
+
+/* Vertical padding that scales smoothly with the viewport. */
+main {
+  padding-block: var(--space-fluid-xl);
+}
+
+/* When the hero is the first thing in main, remove main's top padding so the
+   hero sits directly under the header. */
+main:has(> .hero:first-child) {
+  padding-block-start: 0;
+}
+main > .hero:first-child {
+  margin-block-end: var(--space-fluid-lg);
+}
+
+/* Even spacing under each section, except the last one so it doesn't
+   stack with the footer. Fluid token so the gap scales with the viewport. */
+section {
+  margin-block-end: var(--space-fluid-lg);
+}
+section:last-child {
+  margin-block-end: 0;
+}
+
+} /* end @layer layout */
+
+
+@layer components {
+
+/* Skip link, so keyboard users can jump straight to the main content. It
+   sits off screen and only appears once it's tabbed to. */
+.skip-link {
+  position: absolute;
+  inset-inline-start: -999px;
+  inset-block-start: var(--space-sm);
+  background: var(--gold);
+  color: var(--ink);
+  padding-block: 0.6rem;
+  padding-inline: var(--space-md);
+  z-index: 1000;
+  font-weight: 700;
+  border-radius: var(--radius);
+  text-decoration: none;
+}
+.skip-link:focus {
+  inset-inline-start: var(--space-md);
+}
+
+/* Main takes focus from the skip link but is not a control, so it shows no
+   focus outline. */
+main:focus {
+  outline: none;
+}
+
+/* Card grid that sorts out its own columns, no per device media queries.
+   Flexbox is the fallback and Grid takes over below. The auto-fit line fits
+   as many columns as it can at --col-min each, so it's one column on phones
+   and more as the screen gets wider. The nested min() keeps it from
+   overflowing on screens narrower than --col-min. */
+.card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap);
+  align-items: stretch;
+}
+.card-grid > .card {
+  flex: 1 1 var(--col-min);
+}
+
+/* Grid upgrade browsers without Grid keep the flexbox rules above. */
+@supports (display: grid) {
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(var(--col-min), 100%), 1fr));
+  }
+  .card-grid > .card {
+    flex: initial;
+  }
+
+  /* Quick links uses a bigger minimum so it lands on 3 columns on desktop. */
+  .card-grid.cols-3 {
+    grid-template-columns: repeat(auto-fit, minmax(min(var(--col-min-wide), 100%), 1fr));
+  }
+}
+
+/* Lets a wide table scroll sideways on small screens instead of stretching
+   the page.Overflow-x is the fallback and overflow-inline.*/
+.table-wrap {
+  overflow-x: auto;
+  overflow-inline: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-color: var(--maroon) var(--mist);
+  border-radius: var(--radius);
+}
+
+
+/* Stat grid for Gameday at a glance. Using auto-fill instead of auto-fit
+   keeps the cards the same width rather than stretching a lone card across
+   the whole row. Each card is a two-row grid with the label over the value,
+   and with subgrid the labels and values line up all the way across. */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(var(--col-min), 100%), 1fr));
+  gap: var(--gap);
+}
+.stat {
+  display: grid;
+  grid-template-rows: fit-content(4rem) auto;
+  gap: var(--space-xs);
+  background: var(--card-bg);
+  border: var(--card-border);
+  border-inline-start: 4px solid var(--gold);
+  border-radius: var(--card-radius);
+  padding: var(--card-padding);
+}
+
+.stat dt {
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  font-size: var(--text-sm);
+  color: var(--maroon);
+}
+
+.stat dd {
+  margin: 0;
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  line-height: var(--leading-tight);
+}
+
+/* Subgrid lines up every card's label row and value row across the whole
+   row. It's behind a feature query, so browsers without subgrid just keep
+   the fit-content() fallback above. */
+@supports (grid-template-rows: subgrid) {
+  .stat-grid {
+    grid-auto-rows: min-content;
+  }
+  .stat-grid > .stat {
+    grid-row: span 2;
+    grid-template-rows: subgrid;
+  }
+}
+
+
+/* Site header and nav. It has four states, all done with pure CSS and no
+   JavaScript. Mobile with the menu closed, mobile with it open once the
+   hidden checkbox is checked, desktop as a row from 992px up, and a middle
+   desktop range from 992px to 1399px where some link text is trimmed to fit.
+   All the nav rules are kept together on purpose so they don't drift apart. */
+
+/* Full-width maroon bar with a gold underline */
+.site-header {
+  background: var(--nav-bg);
+  color: var(--paper);
+  border-bottom: var(--nav-border);
+}
+
+/* Brand on the left, hamburger on the right */
+.site-header .container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  padding-block: 0.75rem;
+}
+
+/* The site-name link, pinned left */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--paper);
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 1.15rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-left: var(--space-xl);
+}
+
+/* Don't let the brand turn purple once visited */
+.brand:visited {
+  color: var(--paper);
+}
+
+/* Brand logo, an inline SVG trident. Gold via currentColor. */
+.brand .pitchfork {
+  inline-size: 2rem;
+  block-size: 2rem;
+  color: var(--gold);
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+/* Gold hamburger button, shows on phones and tablets */
+.nav-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--gold);
+  color: var(--ink);
+  border: none;
+  padding: 0.5rem 0.8rem;
+  border-radius: var(--btn-radius);
+  font-weight: 700;
+  cursor: pointer;
+  margin-left: auto;
+}
+
+/* The hidden checkbox that drives the open/close is off-screen */
+.nav-toggle-checkbox {
+  position: absolute;
+  left: -999px;
+}
+
+/* On mobile the links stack vertically */
+.main-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+/* Each link is a full-width tappable block */
+.main-nav a {
+  display: block;
+  color: var(--nav-link-color);
+  text-decoration: none;
+  padding: 0.6rem 0.75rem;
+  border-radius: var(--radius);
+  font-weight: 600;
+}
+
+/* Keep nav links white after they're visited */
+.main-nav a:visited {
+  color: var(--nav-link-color);
+}
+
+/* Menu starts hidden on mobile until the box is checked */
+.main-nav {
+  flex-basis: 100%;
+}
+.nav-toggle-checkbox:not(:checked) ~ .main-nav {
+  display: none;
+}
+
+
+/* Hero the banner across the top of the home page. */
+
+/* Photo background with a maroon gradient over it so the white headline
+   stays readable. Photo by Patrick Konior via Unsplash, see Build.md. */
+.hero {
+  background-image:
+    linear-gradient(135deg, rgba(140, 29, 64, 0.72), rgba(94, 20, 43, 0.82)),
+    url("images/patrick-konior-RgYUCJBmtCA-unsplash.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: var(--paper);
+  padding-block: var(--space-3xl);
+  text-align: center;
+}
+
+/* Big uppercase headline */
+.hero h1 {
+  color: var(--paper);
+  font-size: var(--text-hero);
+  margin: 0 0 var(--space-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* Intro line, kept to a readable width and centered */
+.hero p {
+  max-width: var(--max-hero-p);
+  margin: 0 auto var(--space-xl);
+  font-size: var(--text-lg);
+}
+
+/* Gold button, hero only. Dark ink text on gold is the contrast-safe pair. */
+.hero .btn {
+  background: var(--gold);
+  color: var(--ink);
+}
+.hero .btn:hover {
+  background: var(--gold-dark);
+  color: var(--ink);
+}
+
+
+/* Buttons .btn class covers both links and buttons, and the gold hero
+   button above is the only exception. */
+
+/* Base button style for every call-to-action */
+.btn {
+  display: inline-block;
+  background: var(--btn-bg);
+  color: var(--btn-color);
+  text-decoration: none;
+  padding: var(--btn-padding-y) var(--btn-padding-x);
+  border-radius: var(--btn-radius);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: 700;
+  border: var(--btn-border);
+  cursor: pointer;
+  line-height: var(--leading-tight);
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+/* Keep button text white even after the link's been visited */
+.btn:visited {
+  color: var(--btn-color);
+}
+
+
+/* Section titles and the intro lede text under them */
+
+/* Maroon uppercase heading with a gold underline */
+.section-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-3xl);
+  border-bottom: 3px solid var(--gold);
+  padding-bottom: 0.4rem;
+  margin-bottom: var(--space-lg);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--maroon);
+}
+
+/* The intro paragraph under a section title */
+.lede {
+  font-size: var(--text-lg);
+  max-width: none;
+  margin-bottom: var(--space-xl);
+}
+
+
+/* Cards, used for quick links on the home page and the tip boxes on the
+   Transportation page. Cards in the same row match height, and the button
+   always lands at the bottom no matter how much text is above it. */
+
+/* White card with a border, shadow, and column layout */
+.card {
+  background: var(--card-bg);
+  border: var(--card-border);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+  padding: var(--card-padding);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+}
+
+.card h3 {
+  margin-top: 0;
+  font-size: var(--text-2xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-xs);
+}
+
+.card h3 .card-icon {
+  inline-size: 2.25em;
+  block-size: 2.25em;
+  vertical-align: baseline;
+  margin-inline-end: 0;
+}
+
+.card p {
+  flex-grow: 1;
+  margin-bottom: 0;
+}
+
+.card .btn {
+  align-self: center;
+  margin-top: var(--space-lg);
+}
+
+
+/* Spotlight, a reusable promo block with an image, heading, blurb, and
+   button. It reacts to the width of its own container rather than the whole
+   screen, so it stacks in a narrow spot and goes side by side in a wide one.
+   The .spotlight-wrap is the container being measured, and the @container
+   rule further down switches it to two columns at 30rem. */
+.spotlight-wrap {
+  container-type: inline-size;
+  container-name: spotlight;
+}
+
+/* Narrow container default, a single stacked column. */
+.spotlight {
+  display: grid;
+  gap: var(--space-lg);
+  align-items: center;
+  background: var(--mist);
+  border-radius: var(--radius);
+  border-inline-start: 5px solid var(--gold);
+  padding: var(--space-lg);
+}
+
+/* The spotlight photo sits in a figure so it can carry a credit line. The
+   figure is the first item in the grid, the media column, with its default
+   margins stripped so it sits flush. */
+.spotlight-figure {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.spotlight-media {
+  inline-size: 100%;
+  aspect-ratio: 4 / 5;
+  flex: 1 1 auto;
+  min-block-size: 0;
+  object-fit: cover;
+  object-position: center;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+/* Extra-small credit line under the spotlight photo. */
+.media-credit--spotlight {
+  margin-top: var(--space-xs);
+}
+
+/* Full-height text column so the heading aligns with the top of the photo
+   and the button drops to its base. */
+.spotlight-body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.spotlight-body h3 {
+  margin-block-start: 0;
+  margin-block-end: var(--space-md);
+  font-size: var(--text-2xl);
+}
+
+.spotlight-body p {
+  max-inline-size: var(--max-lede);
+  font-size: var(--text-lg);
+  line-height: 1.6;
+}
+
+/* Button follows the paragraph with a normal gap; align-self stops it
+   stretching full width. */
+.spotlight-body .btn {
+  margin-block-start: var(--space-md);
+  align-self: flex-start;
+}
+
+/* Once the container is wide enough, go to two columns. The photo column is
+   capped at 260px so the text always keeps a usable share. It's behind a
+   feature query, so browsers without container queries just keep the stacked
+   layout. */
+@supports (container-type: inline-size) {
+  @container spotlight (inline-size >= 30rem) {
+    .spotlight {
+      grid-template-columns: fit-content(260px) 1fr;
+      align-items: stretch;
+    }
+  }
+}
+
+
+/* Data tables on the Transportation and Schedule pages. They share the same
+   header, row header, zebra stripe, and caption look. */
+
+/* Full-width table, collapsed borders */
+table.data {
+  width: 100%;
+  min-width: 44rem;
+  min-inline-size: 44rem;
+  border-collapse: collapse;
+  margin-block: var(--space-md);
+  background: var(--paper);
+  font-size: var(--text-base);
+}
+
+/* Bold maroon caption above the table */
+table.data caption {
+  text-align: left;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: var(--text-xl);
+  color: var(--tbl-caption);
+  margin-bottom: var(--space-sm);
+  caption-side: top;
+}
+
+/* Shared padding and border for every cell */
+table.data th,
+table.data td {
+  border: 1px solid var(--line);
+  padding: var(--tbl-cell-pad-y) var(--tbl-cell-pad-x);
+  text-align: left;
+  vertical-align: top;
+}
+
+/* Maroon column-header row */
+table.data thead th {
+  background: var(--tbl-head-bg);
+  color: var(--tbl-head-color);
+  font-weight: 700;
+}
+
+/* Row headers get the light mist background */
+table.data th[scope="row"] {
+  background: var(--tbl-row-bg);
+  font-weight: 700;
+}
+
+/* Zebra striping on the even rows */
+table.data tbody tr:nth-child(even) td {
+  background: var(--tbl-row-bg);
+}
+
+
+/* Definition lists for the gate times and rules on the Stadium page. */
+/* Space below the whole list */
+.rules {
+  margin-bottom: var(--space-xl);
+}
+
+/* Bold maroon term, with a little gap above every one except the first */
+.rules dt {
+  font-weight: 700;
+  color: var(--maroon);
+  margin-top: 0.75rem;
+}
+.rules dt:first-child {
+  margin-top: 0;
+}
+
+/* Indented definition under each term */
+.rules dd {
+  margin: 0 0 var(--space-sm) var(--space-lg);
+}
+
+
+/* FAQ accordion, built from the native details and summary elements with no
+   JavaScript. An open item gets a gold left border and a light background so
+   its expanded state is clear at a glance. */
+
+/* One accordion item, with a transparent left accent by default */
+.faq details {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 0.75rem var(--space-md);
+  margin-bottom: 0.75rem;
+  background: var(--paper);
+  border-left: 3px solid transparent;
+  transition: border-color 0.15s ease;
+}
+
+/* Open item, gold border and mist fill */
+.faq details[open] {
+  border-left-color: var(--gold);
+  background: var(--mist);
+}
+
+/* The clickable question, bold maroon */
+.faq summary {
+  font-weight: 700;
+  cursor: pointer;
+  color: var(--maroon);
+  list-style: none;
+  padding-right: 1.5em;
+  position: relative;
+}
+
+/* +/- indicator instead of the default triangle */
+.faq summary::after {
+  content: "+";
+  position: absolute;
+  right: 0;
+  color: var(--maroon);
+  font-weight: 700;
+  transition: transform 0.15s ease;
+}
+.faq details[open] summary::after {
+  content: "−";
+}
+
+/* Hide Safari/Chrome's built-in disclosure arrow */
+.faq summary::-webkit-details-marker {
+  display: none;
+}
+
+/* A little gap between the question and its answer once open */
+.faq details[open] summary {
+  margin-bottom: var(--space-sm);
+}
+
+
+/* Contact form on the FAQ page. A single .field class handles every input
+   type, with the label sitting above its input each time. */
+
+/* Stack the fields with even gaps */
+.contact-form {
+  display: grid;
+  gap: var(--space-md);
+  max-width: none;
+}
+.contact-form button[type="submit"] {
+  justify-self: start;
+}
+
+/* Label-above-input, stacked in a column */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.field label {
+  font-weight: 700;
+  font-size: var(--text-base);
+}
+
+/* Red asterisk on required fields */
+.field .req {
+  color: var(--req-color);
+  font-weight: 700;
+  margin-left: 0.15em;
+}
+
+/* Shared look for all three input types. The font inherit line is the
+   important part, since it stops inputs from dropping back to the browser's
+   own default font. */
+.field input,
+.field textarea,
+.field select {
+  padding: 0.6rem var(--space-sm);
+  border: var(--field-border);
+  border-radius: var(--field-radius);
+  font: inherit;
+  background: var(--paper);
+  color: var(--ink);
+  width: 100%;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* Give the textarea a usable starting height and let people drag it taller
+   but not wider */
+.field textarea {
+  min-height: 7rem;
+  resize: vertical;
+}
+
+/* Small helper text under the fields and above the submit button */
+.form-note {
+  font-size: var(--text-sm);
+  color: #555;
+  margin-top: var(--space-xs);
+}
+
+
+/* Freshness stamp and callout. The .updated stamp is the last updated note
+   on the Transportation and Schedule pages, and .callout is that same look
+   reused as a general info box. */
+
+/* Last updated stamp */
+.updated {
+  display: inline-block;
+  background: var(--callout-bg);
+  border-left: var(--callout-border);
+  padding: 0.4rem 0.75rem;
+  font-size: var(--text-sm);
+  color: #444;
+  margin-bottom: var(--space-lg);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+/* General purpose info box, gold left border on a mist background */
+.callout {
+  background: var(--callout-bg);
+  border-left: var(--callout-border);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: var(--space-md) var(--space-lg);
+  margin-bottom: var(--space-xl);
+}
+
+.callout p:last-child {
+  margin-bottom: 0;
+}
+
+/* Pat Tillman tribute block, a two-column layout on the Traditions page. It
+   wraps down to a single stack on narrow screens by itself, no extra media
+   query needed. */
+
+/* Mist block, gold left border, two flexible columns. The columns stretch to
+   the same height so the photo matches the text column beside it. */
+.tribute {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap);
+  align-items: stretch;
+  background: var(--mist);
+  border-left: 5px solid var(--gold);
+  border-radius: var(--radius);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-xl);
+}
+
+/* The media column, grows but caps out at 420px. Flex column so its picture
+   and photo can fill the shared row height next to the text. */
+.tribute-media {
+  flex: 1 1 280px;
+  max-width: 420px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+.tribute-media picture {
+  display: block;
+  flex: 1;
+  min-height: 0;
+}
+
+/* The tribute photo fills the column height so it lines up with the paragraphs
+   beside it, and carries the rounded corners and shadow. */
+.tribute-photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+/* When the block wraps to a single stacked column on narrow screens, the photo
+   goes back to a reserved 3:2 box so it does not stretch tall on its own row. */
+@media (max-width: 39.99rem) {
+  .tribute-media picture {
+    flex: 0 1 auto;
+  }
+  .tribute-photo {
+    height: auto;
+    aspect-ratio: 3 / 2;
+  }
+}
+
+/* Text column next to the media drops below it on small screens */
+.tribute-text {
+  flex: 1 1 320px;
+}
+.tribute-text p:first-child {
+  margin-top: 0;
+}
+
+
+/* Feature image, the photo at the top of the home and schedule pages. */
+
+/* Full width with a reserved aspect-ratio so the browser knows the box
+   height before the image loads and nothing shifts. The width and height
+   attributes are a second safeguard. */
+.feature-img {
+  width: 100%;
+  aspect-ratio: 800 / 450;
+  object-fit: cover;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  margin-bottom: var(--space-xl);
+}
+
+/* The picture wrapper is inline by default, so make it a block and the
+   feature image reserves its full width cleanly. */
+picture:has(> .feature-img) {
+  display: block;
+}
+
+/* Small feature variant, a smaller contained image on a mist background. */
+.feature-img--sm {
+  aspect-ratio: 400 / 220;
+  max-width: 400px;
+  object-fit: contain;
+  background: var(--mist);
+}
+
+/* Schedule feature photo, the football variants. The 3:2 box is reserved
+   before load so nothing shifts, and srcset and sizes pick the right one. */
+.feature-img--photo {
+  aspect-ratio: 3 / 2;
+  max-width: 560px;
+  object-fit: cover;
+  margin-bottom: 0;
+}
+
+/* Wrapper so the photo and its credit line stay grouped and centered. */
+.feature-figure {
+  margin: 0 0 var(--space-xl);
+  max-width: 560px;
+}
+
+/* The home hero photo spans the full content column, so it skips the cap. */
+.feature-figure--hero {
+  max-width: none;
+}
+
+/* On the schedule and stadium intros the photo spans the full column so it
+   lines up with the section-title underline above it. */
+.schedule-intro .feature-figure,
+.stadium-intro .feature-figure {
+  max-width: none;
+}
+.schedule-intro .feature-img--photo,
+.stadium-intro .feature-img--photo {
+  max-width: none;
+}
+
+/* Home hero photo framed as a wide banner with object-fit: cover for the crop.
+   The aspect-ratio reserves the box and the max-height caps its height. */
+.hero-photo {
+  display: block;
+  margin-inline: auto;
+  margin-bottom: 0;         
+  width: 100%;               
+  max-width: 100%;
+  aspect-ratio: 9 / 8;      
+  max-height: 560px;
+  object-fit: cover;       
+  object-position: center 30%; 
+  background: var(--mist);
+}
+
+/* Small, muted credit line under a photo. */
+.media-credit {
+  font-size: var(--text-sm);
+  color: #555;
+  margin-top: var(--space-sm);
+  padding-inline: var(--space-sm);
+  line-height: 1.5;
+}
+.media-credit a {
+  color: var(--maroon);
+}
+
+
+/* Footer, a dark bar with gold links in two columns. */
+/* The dark bar at the bottom of every page */
+.site-footer {
+  background: var(--ink);
+  color: #ddd;
+  padding-block: var(--space-2xl);
+  margin-top: var(--space-3xl);
+}
+
+/* Footer links are gold, and stay gold after being visited */
+.site-footer a {
+  color: var(--gold);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+.site-footer a:visited {
+  color: var(--gold);
+}
+
+/* Blurb on the left, nav on the right */
+.footer-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2xl);
+  justify-content: space-between;
+}
+
+/* Footer brand heading. The logo sits before the site name, a larger gold copy
+   of the header mark. Headings are maroon by default, which fails contrast on
+   the dark footer, so this text is white (about 15.3:1 on --ink). The trident
+   keeps its gold from .footer-logo. */
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--paper);
+}
+.footer-logo {
+  inline-size: 3.25rem;
+  block-size: 3.25rem;
+  color: var(--gold);
+  flex-shrink: 0;
+}
+
+/* Footer nav with no bullets. */
+.site-footer nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.site-footer nav li {
+  margin-bottom: var(--space-xs);
+}
+
+/* Small gray legal line under the footer grid */
+.disclaimer {
+  font-size: var(--text-sm);
+  color: #aaa;
+  margin-top: var(--space-xl);
+  border-top: 1px solid #333;
+  padding-top: var(--space-md);
+}
+
+
+/* Visually hidden but still read out by screen readers */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Strip bullets and indent off a list */
+.list-bare {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Lay list items out in a horizontal row */
+.list-inline {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+}
+
+/* Drop the underline on a link that acts as a button or nav item, and put
+   it back on hover so there's still a cue */
+.no-underline {
+  text-decoration: none;
+}
+.no-underline:hover {
+  text-decoration: underline;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* Small muted gray for secondary labels and notes */
+.text-muted {
+  color: #555;
+  font-size: var(--text-sm);
+}
+
+/* Stretch to full width */
+.w-full {
+  width: 100%;
+  display: block;
+}
+
+
+/* Focus ring for keyboard users only. Using focus-visible means a mouse
+   click won't trigger it, only tabbing does. Blue ring on light backgrounds. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+summary:focus-visible {
+  outline: var(--focus-width) solid var(--focus);
+  outline-offset: var(--focus-offset);
+  border-radius: var(--radius-sm);
+}
+
+/* The blue ring barely shows on the maroon header, so switch it to white there */
+.site-header a:focus-visible,
+.site-header button:focus-visible,
+.nav-toggle:focus-visible {
+  outline-color: var(--focus-invert);
+}
+
+/* Darken a nav link on hover */
+.main-nav a:hover {
+  background: var(--nav-link-hover);
+  color: var(--paper);
+}
+
+/* Gold highlight on the current page. It keys off aria-current, so the
+   you are here cue is both visible and announced to screen readers. */
+.main-nav a[aria-current="page"] {
+  background: var(--nav-active-bg);
+  color: var(--nav-active-color);
+  font-weight: 700;
+}
+.main-nav a[aria-current="page"]:visited {
+  color: var(--nav-active-color);
+}
+
+/* Darken the hamburger on hover */
+.nav-toggle:hover {
+  background: var(--gold-dark);
+}
+
+/* Darken a button on hover */
+.btn:hover {
+  background: var(--btn-hover-bg);
+  color: var(--paper);
+}
+
+/* Disabled button faded, not-allowed cursor, and no clicking through */
+.btn:disabled,
+button.btn[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Nudge and tint the FAQ question on hover so it reads as clickable */
+.faq summary:hover {
+  color: var(--maroon-dark);
+  background: var(--mist);
+  border-radius: var(--radius-sm);
+  padding-left: var(--space-xs);
+}
+
+/* Blue outline and border when a form field is focused */
+.field input:focus-visible,
+.field textarea:focus-visible,
+.field select:focus-visible {
+  outline: var(--focus-width) solid var(--field-focus-color);
+  outline-offset: var(--focus-offset);
+  border-color: var(--field-focus-color);
+}
+
+/* Red border and background on an invalid field, but only after it has been
+   touched and left. user-invalid is used on purpose, since plain invalid
+   would turn every required field red on page load before anything is typed.
+   Older browsers that don't support it just skip this, with no harm done. */
+.field input:user-invalid,
+.field textarea:user-invalid {
+  border: var(--field-invalid-border);
+  background: var(--field-invalid-bg);
+}
+
+/* If they refocus a field that's still invalid, go darker red */
+.field input:user-invalid:focus-visible,
+.field textarea:user-invalid:focus-visible {
+  outline-color: var(--error-dark);
+}
+
+/* Faint row highlight on hover for tracking across a wide table */
+table.data tbody tr:hover td,
+table.data tbody tr:hover th[scope="row"] {
+  background: #e8e8ef;
+}
+
+
+/* A note on the breakpoints. The card and stat grids reflow on their own
+   with auto-fit and auto-fill, so there are no column-count breakpoints. The
+   ones that remain are driven by the content. 992px is where the nav labels
+   stop fitting beside the brand and the hamburger takes over, and the range
+   from 992px to 1399px is where they only fit with the extra words trimmed. */
+
+/* Desktop nav swap the hamburger for a real horizontal nav at the width
+   where all the links first fit on one line beside the brand. */
+@media (min-width: 992px) {
+
+  /* Full-width header, brand left and nav right */
+  .site-header .container {
+    flex-wrap: nowrap;
+    max-width: none;
+    padding-inline: 2rem;
+  }
+  .brand {
+    margin-left: 0;
+    min-width: 0;
+    flex-shrink: 1;
+  }
+
+  .nav-toggle {
+    display: none;
+  }
+  .main-nav {
+    flex-basis: auto;
+    display: flex !important;
+    align-items: center;
+    margin-left: auto;
+  }
+
+  /* Links sit side by side, pushed to the right */
+  .site-header .main-nav ul {
+    display: flex;
+    flex-direction: row !important;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.25rem;
+    min-width: 0;
+  }
+
+  /* Don't let a long label wrap onto a second line */
+  .site-header .main-nav a {
+    white-space: nowrap;
+  }
+}
+
+/* The awkward middle zone from 992px to 1399px, where there isn't quite room
+   for the full labels, so the extra words in .nav-extra are hidden. They
+   come back at 1400px where everything fits again. */
+@media (min-width: 992px) and (max-width: 1399px) {
+  .site-header .main-nav .nav-extra {
+    display: none;
+  }
+
+  /* Slightly smaller header and nav-link padding so the full row of links
+     fits on one line in this width range. */
+  .site-header .container {
+    padding-inline: 1.25rem;
+  }
+  .site-header .main-nav a {
+    padding-inline: 0.55rem;
+  }
+}
+
+/* The .cols-3 columns are handled by the auto-fit card grid, so they fill
+   based on the space available instead of a fixed column count. */
+
+/* Everything below the desktop breakpoint, so phones and tablets. Brand on
+   the left, hamburger on the right, the same at every small size. */
+@media (max-width: 991px) {
+
+  /* On tablets and phones, wrapping lets the open menu drop onto its own row. */
+  .site-header .container {
+    flex-wrap: wrap;
+    align-items: center;
+    padding-inline: var(--space-md);
+    padding-block: 0.75rem;
+    gap: var(--space-sm);
+  }
+
+  /* Centered the footer on tablets and phones as a stacked column. */
+  .footer-grid {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  /* Centered the logo and name together as a group. */
+  .footer-brand {
+    justify-content: center;
+  }
+
+  /* Footer nav spans full width and keeps its links left-aligned. */
+  .site-footer nav {
+    align-self: stretch;
+    text-align: left;
+  }
+
+  /* Brand fills the space left of the hamburger, truncating if it has to. */
+  .brand {
+    margin-left: 0;
+    font-size: 1.1rem;
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Only the text part truncates */
+  .brand span:not(.pitchfork) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Icon stays a fixed size. It's an inline SVG, so it's sized by its box. */
+  .brand .pitchfork {
+    inline-size: 1.75rem;
+    block-size: 1.75rem;
+    flex-shrink: 0;
+  }
+
+  /* Hamburger sits at the right of the row on the tablet layout. */
+  .nav-toggle {
+    flex-shrink: 0;
+  }
+
+  /* Send the open menu to its own row under the brand and hamburger */
+  .main-nav {
+    order: 3;
+    flex-basis: 100%;
+  }
+
+  /* Tapping the hamburger checks the box, which drops the vertical list */
+  .nav-toggle-checkbox:checked ~ .main-nav ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding-top: var(--space-sm);
+  }
+}
+
+/* Small phones, 400px and under. Drop the Menu word so the button and
+   brand fit on one row. Larger phones keep ☰ Menu. */
+@media (max-width: 400px) {
+
+  .nav-toggle-label {
+    display: none;
+  }
+
+  /* Keep the brand and button on one line. The brand shrinks and truncates
+     instead of pushing the button down, and flex 1 1 0 lets it take the
+     leftover space without shoving the button off the right edge. The open
+     menu still drops to its own row. */
+  .brand {
+    font-size: 1rem;
+    gap: 0.35rem;         
+    min-width: 0;
+    flex: 1 1 0;
+  }
+
+  /* Slightly smaller logo at this width to free up room for the button. */
+  .brand .pitchfork {
+    inline-size: 1.5rem;
+    block-size: 1.5rem;
+  }
+
+  /* Truncate the site name so the button always fits. It has to be a
+     shrinkable, block-level flex item for text-overflow to kick in. */
+  .brand span:not(.pitchfork) {
+    flex: 1 1 auto;
+    min-width: 0;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Pin the button to the far right of the row. The auto left margin takes
+     up the leftover space so the button hugs the right edge beside the
+     brand, and it never shrinks or wraps. */
+  .nav-toggle {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    margin-left: auto;
+  }
+}
+
+/* Smallest phones, around 320px. Shrink the brand name a bit more and let it
+   cut off with an ellipsis so the button always fits on the same line. */
+@media (max-width: 360px) {
+  .brand {
+    font-size: 0.85rem;
+    gap: 0.3rem;
+  }
+
+  .brand .pitchfork {
+    inline-size: 1.35rem;
+    block-size: 1.35rem;
+  }
+}
+
+
+@media print {
+
+  /* One-inch margins, letter portrait */
+  @page {
+    margin: 1in;
+    size: letter portrait;
+  }
+
+  /* Flatten everything to black text on white, no shadows, to save ink */
+  *,
+  *::before,
+  *::after {
+    background: #fff !important;
+    color: #000 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  /* Drop anything that's meaningless on paper, like nav, hero, and footer. */
+  .skip-link,
+  .site-header,
+  .nav-toggle,
+  .nav-toggle-checkbox,
+  .main-nav,
+  .hero,
+  .card-grid,
+  .stat-grid,
+  .site-footer,
+  .btn {
+    display: none !important;
+  }
+
+  /* Flatten the spotlight to a plain stacked block on paper. */
+  .spotlight {
+    display: block;
+    border-left: 2pt solid #888;
+    background: transparent;
+    padding-left: 8pt;
+  }
+
+  /* Serif at 11pt reads better on paper */
+  body {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 11pt;
+    line-height: 1.5;
+    max-width: none;
+  }
+
+  /* Let content run the full width of the page */
+  main, .container {
+    max-width: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  /* Try not to split a section across two pages */
+  section {
+    margin-bottom: 1.5rem;
+    page-break-inside: avoid;
+  }
+
+  /* Drop the scroll wrapper so the table can use the whole width */
+  .table-wrap {
+    overflow-x: visible;
+  }
+
+  /* Shrink table text a bit to fit more rows per page */
+  table.data {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9pt;
+    page-break-inside: auto;
+  }
+
+  /* Repeat the header row at the top of each printed page */
+  table.data thead {
+    display: table-header-group;
+  }
+
+  /* Don't split a row across pages */
+  table.data tr {
+    page-break-inside: avoid;
+  }
+
+  /* Visible borders and tight padding for printed cells */
+  table.data th,
+  table.data td {
+    border: 1px solid #888;
+    padding: 4pt 6pt;
+    color: #000 !important;
+    background: #fff !important;
+  }
+
+  /* Light gray header so titles stand out without dumping ink */
+  table.data thead th {
+    background: #ddd !important;
+    color: #000 !important;
+    font-weight: bold;
+  }
+
+  table.data th[scope="row"] {
+    background: #f0f0f0 !important;
+  }
+
+  /* Keep a faint zebra stripe */
+  table.data tbody tr:nth-child(even) td {
+    background: #f8f8f8 !important;
+  }
+
+  table.data caption {
+    font-size: 11pt;
+    font-weight: bold;
+    text-align: left;
+    margin-bottom: 4pt;
+    color: #000 !important;
+  }
+
+  details {
+    display: block !important;
+    border: none;
+  }
+  details[open],
+  details:not([open]) {
+    display: block !important;
+  }
+
+  /* Question stays bold, but drop the marker */
+  summary {
+    font-weight: bold;
+    list-style: none;
+  }
+
+  /* Hide the triangle and the custom plus/minus marker for print */
+  summary::marker,
+  summary::-webkit-details-marker,
+  summary::after {
+    display: none !important;
+    content: "" !important;
+  }
+
+  /* Make sure the answer content shows no matter the open state */
+  details > *:not(summary) {
+    display: block !important;
+  }
+
+  /* Strip the last updated stamp down to plain small text */
+  .updated {
+    border-left: none;
+    background: transparent;
+    font-size: 8pt;
+    color: #555;
+    margin-bottom: 0.5rem;
+  }
+
+  /* Don't let a heading get orphaned at the bottom of a page */
+  h1, h2, h3 {
+    page-break-after: avoid;
+    color: #000 !important;
+  }
+
+  /* Print each link's URL after it so a paper copy is still useful */
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: 8pt;
+    color: #555;
+  }
+  a[href^="#"]::after,
+  a[href^="javascript"]::after {
+    content: "";
+  }
+
+  /* Simplify callouts and the tribute block for print */
+  .callout,
+  .tribute {
+    border-left: 2pt solid #888;
+    background: transparent;
+    padding-left: 8pt;
+  }
+}
+
+
+
+/* MAP EMBED on the Transportation and Parking page
+   Address above the map. It's the text alternative and fallback, so it
+   reads like normal body text instead of italic. */
+.map-alt {
+  font-style: normal;
+  line-height: 1.6;
+  margin: 0 0 1rem;
+}
+
+/* Reserve space for the map with an aspect-ratio so the box is sized before
+   the map tiles load. */
+.map-embed {
+  position: relative;
+  width: 100%;
+  max-width: none;
+  aspect-ratio: 16 / 7;
+  margin: 0 0 0.5rem;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+/* The iframe fills the reserved box; the sized wrapper prevents layout shift. */
+.map-embed iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Small disclosure note under the map. */
+.map-note {
+  color: var(--muted, #555);
+  margin: 0 0 1.5rem;
+}
+
+/* Space above the Next button that follows a section */
+.next-link {
+  margin-top: 1.5rem;
+}
+
+
+/* MEDIA ASSETS  icons Feature-image, spotlight-media, and brand logo sizing live with their
+   components earlier in this file. Only the card icon rule is here. */
+
+/* Decorative card icons. Sized in em so they scale with the heading, tinted
+   maroon, and aria hidden in the markup. */
+.card-icon {
+  inline-size: 1em;
+  block-size: 1em;
+  vertical-align: -0.125em;
+  margin-inline-end: 0.35em;
+  color: var(--maroon);
+  flex-shrink: 0;
+}
+
+} /* end @layer components */
+
+
+/* Font-face rules that register the fallback fonts. */
+
+/* Web font fallback metrics. 
+   These metric adjusted fallbacks take up nearly the same space as
+   the web font, so the swap barely shifts layout. Browsers without 
+   size-adjust just use the plain fallback stack. */
+
+/* Metric-adjusted fallback for Inter body text. */
+@font-face {
+  font-family: "Inter Fallback";
+  src: local("Segoe UI"), local("Arial"), local("Helvetica");
+  size-adjust: 100%;
+  ascent-override: 90%;
+  descent-override: 22%;
+  line-gap-override: 0%;
+}
+
+/* Metric-adjusted fallback for Oswald headings. size-adjust narrows it to
+   match Oswald's condensed width. */
+@font-face {
+  font-family: "Oswald Fallback";
+  src: local("Arial Narrow"), local("Segoe UI"), local("Arial");
+  size-adjust: 88%;
+  ascent-override: 100%;
+  descent-override: 24%;
+  line-gap-override: 0%;
+}

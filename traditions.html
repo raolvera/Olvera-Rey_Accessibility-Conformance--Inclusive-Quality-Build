@@ -1,0 +1,240 @@
+<!--Boiler plate-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Page setup -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gameday Traditions | ASU Sun Devils Gameday Hub</title>
+  <meta name="description" content="Learn the Sun Devils football gameday traditions: the fork 'em hand sign, Tillman Tunnel, the fight song, tailgating culture, and Maroon &amp; Gold pride.">
+
+  <!-- Inter (body) and Oswald (headings) from Google Fonts.
+       display=swap shows the fallback until the web font loads. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Oswald:wght@600;700&display=optional">
+
+  <!-- Favicon SVG brand mark, stays crisp on any screen -->
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Skip link for keyboard users -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container">
+      <!-- Logo -->
+      <a class="brand" href="index.html">
+        <!-- Brand logo, inline SVG trident, decorative and aria hidden, gold via currentColor -->
+        <svg class="pitchfork" viewBox="-6 -8 36 36" fill="none" stroke="currentColor"
+             stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+             aria-hidden="true" focusable="false">
+          <!-- Outer circle -->
+          <circle cx="12" cy="10" r="16"/>
+          <!-- Three caps on the tine tips -->
+          <path d="M4.5 4 L7.5 4 L6 1 Z"/>
+          <path d="M10.5 3 L13.5 3 L12 0 Z"/>
+          <path d="M16.5 4 L19.5 4 L18 1 Z"/>
+          <!-- Tines, bowl, and handle -->
+          <path d="M6 4v5M12 3v6M18 4v5"/>
+          <path d="M6 9a6 6 0 0 0 12 0"/>
+          <path d="M12 9v11"/>
+        </svg>
+        <span>Sun Devils Gameday Hub</span>
+      </a>
+
+      <!-- Menu button. This checkbox opens the menu, so it needs a name and
+           must stay visible to screen readers. -->
+      <input class="nav-toggle-checkbox" type="checkbox" id="nav-toggle" aria-label="Open main menu">
+      <label class="nav-toggle" for="nav-toggle"><span aria-hidden="true">☰</span><span class="nav-toggle-label"> Menu</span></label>
+
+      <!-- Nav links -->
+      <nav class="main-nav" aria-label="Primary">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="traditions.html" aria-current="page">Gameday Traditions</a></li>
+          <li><a href="stadium.html">Stadium Guide &amp; Policies</a></li>
+          <li><a href="transportation.html">Transportation &amp; Parking</a></li>
+          <li><a href="schedule.html">Fall Schedule</a></li>
+          <li><a href="faq.html">FAQ &amp; Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main content. tabindex="-1" lets the skip link move focus here, so
+       keyboard users land in the content. -->
+  <main id="main" tabindex="-1">
+    <div class="container">
+      <section aria-labelledby="page-title">
+        <h1 class="section-title" id="page-title">Gameday Traditions</h1>
+        <p class="lede">Sun Devils gameday is more than a football game, it's a set of rituals shared by students, alumni, and fans. Here are the traditions that make an afternoon in Tempe feel like home.</p>
+      </section>
+
+      <section aria-labelledby="rituals-title">
+        <h2 class="section-title" id="rituals-title">Signature Rituals</h2>
+        <!-- Ritual card icons are inline SVG (decorative, aria-hidden) so CSS can
+             tint them via currentColor. -->
+        <div class="card-grid cols-3">
+          <!-- Forks Up card (the brand trident, reused as a decorative icon) -->
+          <article class="card">
+            <h3>
+              <svg class="card-icon" viewBox="-6 -8 36 36" fill="none"
+                   stroke="currentColor" stroke-width="2"
+                   stroke-linecap="round" stroke-linejoin="round"
+                   aria-hidden="true" focusable="false">
+                <circle cx="12" cy="10" r="16"/>
+                <path d="M4.5 4 L7.5 4 L6 1 Z"/>
+                <path d="M10.5 3 L13.5 3 L12 0 Z"/>
+                <path d="M16.5 4 L19.5 4 L18 1 Z"/>
+                <path d="M6 4v5M12 3v6M18 4v5"/>
+                <path d="M6 9a6 6 0 0 0 12 0"/>
+                <path d="M12 9v11"/>
+              </svg>
+              Forks Up
+            </h3>
+            <p>The three-finger fork 'em hand sign is the universal Sun Devils greeting. Raise your forks during the fight song, big plays, and team photos.</p>
+          </article>
+
+          <!-- Tillman Tunnel card (decorative tunnel-arch icon) -->
+          <article class="card">
+            <h3>
+              <svg class="card-icon" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="2"
+                   stroke-linecap="round" stroke-linejoin="round"
+                   aria-hidden="true" focusable="false">
+                <path d="M4 20v-8a8 8 0 0 1 16 0v8"/>
+                <path d="M9 20v-4a3 3 0 0 1 6 0v4"/>
+              </svg>
+              Tillman Tunnel Run-Out
+            </h3>
+            <p>The team charges onto the field through the tunnel honoring Pat Tillman as the crowd rises. It's the loudest moment before kickoff.</p>
+          </article>
+
+          <!-- Fight Song card (decorative music-note icon) -->
+          <article class="card">
+            <h3>
+              <svg class="card-icon" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="2"
+                   stroke-linecap="round" stroke-linejoin="round"
+                   aria-hidden="true" focusable="false">
+                <path d="M9 18V5l10-2v13"/>
+                <circle cx="6" cy="18" r="3"/>
+                <circle cx="16" cy="16" r="3"/>
+              </svg>
+              The Fight Song
+            </h3>
+            <p>The Sun Devil Marching Band leads Maroon and Gold and the fight song after every score. Learn the words and sing along with the section.</p>
+          </article>
+        </div>
+      </section>
+
+      <section aria-labelledby="tailgate-title">
+        <h2 class="section-title" id="tailgate-title">Tailgating Culture</h2>
+        <p class="lede">Tailgates fire up hours before kickoff across the lots near campus. A few tips to fit right in:</p>
+        <!-- cols-3 so these three cards match the width of the Signature Rituals cards above -->
+        <div class="card-grid cols-3">
+          <article class="card">
+            <h3>Arrive Early</h3>
+            <p>Lots and grills fill fast for big matchups. Getting in early means a better spot and time to soak up the atmosphere before gates open.</p>
+          </article>
+          <article class="card">
+            <h3>Wear Maroon &amp; Gold</h3>
+            <p>Deck out in ASU colors. Maroon shirts and gold accessories are the unofficial dress code, and the student section goes all in.</p>
+          </article>
+          <article class="card">
+            <h3>Respect the Heat</h3>
+            <p>Early-season games in Tempe are hot. Bring water, shade, and sunscreen, hydration is part of the tradition here.</p>
+          </article>
+        </div>
+      </section>
+
+      <section aria-labelledby="tillman-title">
+        <h2 class="section-title" id="tillman-title">Honoring Pat Tillman</h2>
+        <!-- Tribute block. The photo shows the number 42, Tillman's retired
+             jersey number, and the text beside it tells his story. WebP first
+             with a JPEG fallback, and width/height + aspect-ratio hold the
+             box so nothing jumps as it loads. -->
+        <div class="tribute">
+          <figure class="tribute-media">
+            <picture>
+              <source type="image/webp"
+                      srcset="images/tribute-42-400.webp 400w,
+                              images/tribute-42-640.webp 640w,
+                              images/tribute-42-900.webp 900w"
+                      sizes="(min-width: 40rem) 420px, 90vw">
+              <img class="tribute-photo"
+                   src="images/tribute-42-640.jpg"
+                   srcset="images/tribute-42-400.jpg 400w,
+                           images/tribute-42-640.jpg 640w,
+                           images/tribute-42-900.jpg 900w"
+                   sizes="(min-width: 40rem) 420px, 90vw"
+                   alt="A textured, grunge number 42 painted in bright yellow on an aged metal surface, echoing Pat Tillman's retired jersey number."
+                   width="900" height="600" loading="lazy" decoding="async">
+            </picture>
+            <figcaption class="media-credit">
+              Photo by
+              <a href="https://www.pexels.com/photo/rustic-number-42-painted-on-metal-surface-36353551/" rel="noopener noreferrer" target="_blank">wal_ via Pexels<span class="sr-only"> (opens in a new tab)</span></a>
+            </figcaption>
+          </figure>
+          <div class="tribute-text">
+            <p>No name means more to Sun Devil football than Pat Tillman. A standout linebacker in the late 1990s, he helped lead ASU to an undefeated regular season and a Rose Bowl appearance, earning a reputation for playing with relentless heart.</p>
+            <p>After a successful NFL career with the Arizona Cardinals, Tillman walked away from the game to enlist in the U.S. Army following September 11, 2001. He was killed in 2004, and his legacy of service, humility, and courage remains woven into Sun Devil gameday.</p>
+            <p>Today his memory lives on through the <strong>Tillman Tunnel</strong> the team runs through, his retired <strong>#42</strong>, and <strong>Pat's Run</strong>, the annual 4.2-mile race that draws thousands to Tempe every spring. On gameday, look for the tributes and take a moment for the Sun Devil who gave everything.</p>
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="pride-title">
+        <h2 class="section-title" id="pride-title">Maroon &amp; Gold Pride</h2>
+        <p class="lede">Whether you bled maroon and gold as a student or you're visiting Tempe for the first time, these traditions belong to everyone in the stands. Learn a couple, join in, and you'll feel like a Sun Devil by the fourth quarter.</p>
+        <p class="next-link"><a class="btn" href="stadium.html">Next: Stadium Guide &amp; Policies</a></p>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <!-- Footer logo, larger copy of the header trident -->
+          <h2 class="footer-brand">
+            <svg class="footer-logo" viewBox="-6 -8 36 36" fill="none" stroke="currentColor"
+                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                 aria-hidden="true" focusable="false">
+              <circle cx="12" cy="10" r="16"/>
+              <path d="M4.5 4 L7.5 4 L6 1 Z"/>
+              <path d="M10.5 3 L13.5 3 L12 0 Z"/>
+              <path d="M16.5 4 L19.5 4 L18 1 Z"/>
+              <path d="M6 4v5M12 3v6M18 4v5"/>
+              <path d="M6 9a6 6 0 0 0 12 0"/>
+              <path d="M12 9v11"/>
+            </svg>
+            Sun Devils Gameday Hub
+          </h2>
+          <p>A community resource for ASU football gameday in Tempe, Arizona.</p>
+        </div>
+        <!-- Footer nav -->
+        <nav aria-label="Footer">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="traditions.html">Gameday Traditions</a></li>
+            <li><a href="stadium.html">Stadium Guide &amp; Policies</a></li>
+            <li><a href="transportation.html">Transportation &amp; Parking</a></li>
+            <li><a href="schedule.html">Fall Schedule</a></li>
+            <li><a href="faq.html">FAQ &amp; Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+      <!-- Disclaimer -->
+      <p class="disclaimer">
+        This is a student capstone project for educational purposes only. It is not affiliated with, endorsed by, or an official site of Arizona State University or Sun Devil Athletics. Always confirm policies, schedules, and parking on official sources before gameday.
+      </p>
+    </div>
+  </footer>
+</body>
+</html>

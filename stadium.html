@@ -1,0 +1,251 @@
+<!--Boiler plate-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Page setup -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stadium Guide &amp; Policies | ASU Sun Devils Gameday Hub</title>
+  <meta name="description" content="Mountain America Stadium clear-bag policy, prohibited items, permitted bags, gate times, and security screening for ASU Sun Devils football gamedays.">
+
+  <!-- Inter (body) and Oswald (headings) from Google Fonts.
+       display=swap shows the fallback until the web font loads. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Oswald:wght@600;700&display=optional">
+
+  <!-- Favicon SVG brand mark, stays crisp on any screen -->
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Skip link for keyboard users -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container">
+      <!-- Logo -->
+      <a class="brand" href="index.html">
+        <!-- Brand logo, inline SVG trident, decorative and aria hidden, gold via currentColor -->
+        <svg class="pitchfork" viewBox="-6 -8 36 36" fill="none" stroke="currentColor"
+             stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+             aria-hidden="true" focusable="false">
+          <!-- Outer circle -->
+          <circle cx="12" cy="10" r="16"/>
+          <!-- Three caps on the tine tips -->
+          <path d="M4.5 4 L7.5 4 L6 1 Z"/>
+          <path d="M10.5 3 L13.5 3 L12 0 Z"/>
+          <path d="M16.5 4 L19.5 4 L18 1 Z"/>
+          <!-- Tines, bowl, and handle -->
+          <path d="M6 4v5M12 3v6M18 4v5"/>
+          <path d="M6 9a6 6 0 0 0 12 0"/>
+          <path d="M12 9v11"/>
+        </svg>
+        <span>Sun Devils Gameday Hub</span>
+      </a>
+
+      <!-- Menu button. This checkbox opens the menu, so it needs a name and
+           must stay visible to screen readers. -->
+      <input class="nav-toggle-checkbox" type="checkbox" id="nav-toggle" aria-label="Open main menu">
+      <label class="nav-toggle" for="nav-toggle"><span aria-hidden="true">☰</span><span class="nav-toggle-label"> Menu</span></label>
+
+      <!-- Nav links -->
+      <nav class="main-nav" aria-label="Primary">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="traditions.html">Gameday Traditions</a></li>
+          <li><a href="stadium.html" aria-current="page">Stadium Guide &amp; Policies</a></li>
+          <li><a href="transportation.html">Transportation &amp; Parking</a></li>
+          <li><a href="schedule.html">Fall Schedule</a></li>
+          <li><a href="faq.html">FAQ &amp; Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main content. tabindex="-1" lets the skip link move focus here, so
+       keyboard users land in the content. -->
+  <main id="main" tabindex="-1">
+    <div class="container">
+      <section class="stadium-intro" aria-labelledby="page-title">
+        <h1 class="section-title" id="page-title">Stadium Guide &amp; Policies</h1>
+        <p class="updated"><strong>Last updated:</strong> August 28, 2026 | always confirm on official sources before gameday.</p>
+        <p class="lede">Mountain America Stadium enforces a clear-bag policy and security screening at every gate. Review what you can bring, what's prohibited, and when gates open so you clear security fast.</p>
+
+        <!-- Feature photo. It carries meaning, so it gets real alt text and a
+             credit below. WebP first with a JPEG fallback, and width/height +
+             aspect-ratio hold the box so nothing jumps as it loads. -->
+        <figure class="feature-figure">
+          <picture>
+            <source type="image/webp"
+                    srcset="images/stadium-400.webp 400w,
+                            images/stadium-640.webp 640w,
+                            images/stadium-900.webp 900w,
+                            images/stadium-1280.webp 1280w,
+                            images/stadium-1600.webp 1600w"
+                    sizes="(min-width: 1100px) 1100px, 100vw">
+            <img class="feature-img feature-img--photo"
+                 src="images/stadium-900.jpg"
+                 srcset="images/stadium-400.jpg 400w,
+                         images/stadium-640.jpg 640w,
+                         images/stadium-900.jpg 900w,
+                         images/stadium-1280.jpg 1280w,
+                         images/stadium-1600.jpg 1600w"
+                 sizes="(min-width: 1100px) 1100px, 100vw"
+                 alt="Rows of empty maroon and gold stadium seats sweeping up around the field on a bright day before gates open."
+                 width="900" height="600" loading="lazy" decoding="async">
+          </picture>
+          <figcaption class="media-credit">
+            Photo by
+            <a href="https://unsplash.com/photos/a-stadium-with-empty-seats-NSiddSRpJYI" rel="noopener noreferrer" target="_blank">Emily Dill Strock via Unsplash<span class="sr-only"> (opens in a new tab)</span></a>
+          </figcaption>
+        </figure>
+      </section>
+
+      <section aria-labelledby="bag-title">
+        <h2 class="section-title" id="bag-title">Clear-Bag Policy</h2>
+        <div class="table-wrap">
+          <table class="data">
+            <caption>Permitted and prohibited bags at Mountain America Stadium</caption>
+            <thead>
+              <tr>
+                <th scope="col">Bag type</th>
+                <th scope="col">Allowed?</th>
+                <th scope="col">Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Clear plastic, vinyl, or PVC tote</th>
+                <td>Yes</td>
+                <td>Must not exceed 12" x 6" x 12".</td>
+              </tr>
+              <tr>
+                <th scope="row">One-gallon clear resealable bag</th>
+                <td>Yes</td>
+                <td>Standard storage-size freezer bag is fine.</td>
+              </tr>
+              <tr>
+                <th scope="row">Small clutch or wristlet</th>
+                <td>Yes</td>
+                <td>Roughly 4.5" x 6.5", with or without a strap. One per guest.</td>
+              </tr>
+              <tr>
+                <th scope="row">Backpacks and large purses</th>
+                <td>No</td>
+                <td>Non-clear backpacks, totes, and oversized bags are not permitted.</td>
+              </tr>
+              <tr>
+                <th scope="row">Diaper bags</th>
+                <td>No</td>
+                <td>Carry supplies in a permitted clear bag instead.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section aria-labelledby="prohibited-title">
+        <h2 class="section-title" id="prohibited-title">Prohibited Items</h2>
+        <div class="table-wrap">
+          <table class="data">
+            <caption>Common items not allowed inside the stadium</caption>
+            <thead>
+              <tr>
+                <th scope="col">Item</th>
+                <th scope="col">Status</th>
+                <th scope="col">Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Outside food &amp; beverages</th>
+                <td>Prohibited</td>
+                <td>Sealed water may be restricted; check current policy.</td>
+              </tr>
+              <tr>
+                <th scope="row">Umbrellas</th>
+                <td>Prohibited</td>
+                <td>Even collapsible umbrellas are typically not allowed.</td>
+              </tr>
+              <tr>
+                <th scope="row">Selfie sticks &amp; tripods</th>
+                <td>Prohibited</td>
+                <td>Professional camera gear needs credentials.</td>
+              </tr>
+              <tr>
+                <th scope="row">Noisemakers &amp; laser pointers</th>
+                <td>Prohibited</td>
+                <td>Air horns and artificial noisemakers are banned.</td>
+              </tr>
+              <tr>
+                <th scope="row">Weapons of any kind</th>
+                <td>Prohibited</td>
+                <td>No firearms, knives, or pepper spray, regardless of permits.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section aria-labelledby="gates-title">
+        <h2 class="section-title" id="gates-title">Gate Times &amp; Screening</h2>
+        <dl class="rules">
+          <dt>When do gates open?</dt>
+          <dd>Gates generally open 90 minutes before kickoff. Arrive early for high-demand games to clear screening comfortably.</dd>
+          <dt>What does screening involve?</dt>
+          <dd>All guests pass through walk-through metal detectors. Have your clear bag open and phone or keys ready to speed the line.</dd>
+          <dt>Is there re-entry?</dt>
+          <dd>Most games are no re-entry. Once you leave, you may not be readmitted on the same ticket.</dd>
+          <dt>Mobile tickets</dt>
+          <dd>Tickets are typically digital. Download and screenshot yours in advance in case cell service is slow near the gates.</dd>
+        </dl>
+        <p class="next-link"><a class="btn" href="transportation.html">Next: Transportation &amp; Parking</a></p>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <!-- Footer logo, larger copy of the header trident -->
+          <h2 class="footer-brand">
+            <svg class="footer-logo" viewBox="-6 -8 36 36" fill="none" stroke="currentColor"
+                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                 aria-hidden="true" focusable="false">
+              <circle cx="12" cy="10" r="16"/>
+              <path d="M4.5 4 L7.5 4 L6 1 Z"/>
+              <path d="M10.5 3 L13.5 3 L12 0 Z"/>
+              <path d="M16.5 4 L19.5 4 L18 1 Z"/>
+              <path d="M6 4v5M12 3v6M18 4v5"/>
+              <path d="M6 9a6 6 0 0 0 12 0"/>
+              <path d="M12 9v11"/>
+            </svg>
+            Sun Devils Gameday Hub
+          </h2>
+          <p>A community resource for ASU football gameday in Tempe, Arizona.</p>
+        </div>
+        <!-- Footer nav -->
+        <nav aria-label="Footer">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="traditions.html">Gameday Traditions</a></li>
+            <li><a href="stadium.html">Stadium Guide &amp; Policies</a></li>
+            <li><a href="transportation.html">Transportation &amp; Parking</a></li>
+            <li><a href="schedule.html">Fall Schedule</a></li>
+            <li><a href="faq.html">FAQ &amp; Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+      <!-- Disclaimer -->
+      <p class="disclaimer">
+        This is a student capstone project for educational purposes only. It is not affiliated with, endorsed by, or an official site of Arizona State University or Sun Devil Athletics. Always confirm policies, schedules, and parking on official sources before gameday.
+      </p>
+    </div>
+  </footer>
+</body>
+</html>

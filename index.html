@@ -1,0 +1,289 @@
+<!--Boiler plate-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Page setup -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home | ASU Sun Devils Gameday Hub</title>
+  <meta name="description" content="Your one stop gameday hub for ASU Sun Devils football clear-bag rules, parking, light rail, traditions, and the fall schedule in Tempe.">
+
+  <!-- Images: JPEG and WebP photos for real pictures, SVG for icons and the
+       logo. Photos load responsively with the picture element. -->
+
+  <!-- Fonts and stylesheet -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Oswald:wght@600;700&display=optional">
+
+  <!-- Favicon SVG brand mark, stays crisp on any screen -->
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Skip link for keyboard users -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container">
+      <!-- Logo -->
+      <a class="brand" href="index.html">
+        <!-- Brand logo, an SVG trident. The text names the site, so the logo
+             is decorative and aria hidden. Gold comes from currentColor. -->
+        <svg class="pitchfork" viewBox="-6 -8 36 36" fill="none" stroke="currentColor"
+             stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+             aria-hidden="true" focusable="false">
+          <!-- Outer circle -->
+          <circle cx="12" cy="10" r="16"/>
+          <!-- Three caps on the tine tips -->
+          <path d="M4.5 4 L7.5 4 L6 1 Z"/>
+          <path d="M10.5 3 L13.5 3 L12 0 Z"/>
+          <path d="M16.5 4 L19.5 4 L18 1 Z"/>
+          <!-- Tines, bowl, and handle -->
+          <path d="M6 4v5M12 3v6M18 4v5"/>
+          <path d="M6 9a6 6 0 0 0 12 0"/>
+          <path d="M12 9v11"/>
+        </svg>
+        <span>Sun Devils Gameday Hub</span>
+      </a>
+
+      <!-- Menu button. This checkbox opens the menu, so it needs a name and
+           must stay in the accessibility tree. -->
+      <input class="nav-toggle-checkbox" type="checkbox" id="nav-toggle" aria-label="Open main menu">
+      <label class="nav-toggle" for="nav-toggle"><span aria-hidden="true">☰</span><span class="nav-toggle-label"> Menu</span></label>
+
+      <!-- Nav links -->
+      <nav class="main-nav" aria-label="Primary">
+        <ul>
+          <li><a href="index.html" aria-current="page">Home</a></li>
+          <li><a href="traditions.html"><span class="nav-extra"></span>Gameday <span class="nav-extra"></span>Traditions</a></li>
+          <li><a href="stadium.html">Stadium<span class="nav-extra"> Guide &amp; Policies</span></a></li>
+          <!-- Transportation & Parking -->
+          <li><a href="transportation.html">Transportation &amp; Parking</a></li>
+          <li><a href="schedule.html">Fall Schedule</a></li>
+          <li><a href="faq.html">FAQ &amp; Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main content. The tabindex of minus 1 lets the skip link move focus
+       here, so keyboard users land in the content. -->
+  <main id="main" tabindex="-1">
+    <!-- Hero. Sits inside main so it is part of a landmark. -->
+    <section class="hero">
+      <div class="container">
+        <h1>Everything You Need for Sun Devils Gameday</h1>
+        <p>Clear bag rules, parking lots, light rail routes, traditions, and the fall schedule all in one place, so you spend less time searching and more time cheering.</p>
+        <a class="btn" href="stadium.html">Check Stadium Policies</a>
+      </div>
+    </section>
+
+    <div class="container">
+      <!-- Home hero photo, a real gameday crowd shot, so it gets real alt text
+           and a credit below. WebP first with a JPEG fallback, and width,
+           height, and aspect ratio hold the box so nothing jumps as it loads. -->
+      <figure class="feature-figure feature-figure--hero">
+        <picture>
+          <source type="image/webp"
+                  srcset="images/gameday-crowd-640.webp 640w,
+                          images/gameday-crowd-960.webp 960w,
+                          images/gameday-crowd-1280.webp 1280w,
+                          images/gameday-crowd-1600.webp 1600w,
+                          images/gameday-crowd-2000.webp 2000w"
+                  sizes="(min-width: 1100px) 1100px, 100vw">
+          <img class="feature-img hero-photo"
+               src="images/gameday-crowd-1280.jpg"
+               srcset="images/gameday-crowd-640.jpg 640w,
+                       images/gameday-crowd-960.jpg 960w,
+                       images/gameday-crowd-1280.jpg 1280w,
+                       images/gameday-crowd-1600.jpg 1600w,
+                       images/gameday-crowd-2000.jpg 2000w"
+               sizes="(min-width: 1100px) 1100px, 100vw"
+               alt="A fan raises a yellow foam pitchfork hand above a packed maroon-and-gold crowd, with players on the sunlit field below during a gameday in Tempe."
+               width="1280" height="1920"
+               decoding="async" fetchpriority="high">
+        </picture>
+        <figcaption class="media-credit">
+          Photo by
+          <a href="https://unsplash.com/photos/a-crowd-of-people-at-a-football-game-VJt9Azdu6O8" rel="noopener noreferrer" target="_blank">Emily Dill Strock via Unsplash<span class="sr-only"> (opens in a new tab)</span></a>
+        </figcaption>
+      </figure>
+
+      <!-- Quick links -->
+      <section aria-labelledby="quick-links-title">
+        <h2 class="section-title" id="quick-links-title">Quick Links</h2>
+        <p class="lede">New to Tempe on gameday or a lifelong fan double checking the rules? Jump straight to what you need.</p>
+
+        <div class="card-grid cols-3">
+          <!-- Stadium card, decorative shield icon, aria hidden -->
+          <article class="card">
+            <h3>
+              <svg class="card-icon" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="2"
+                   stroke-linecap="round" stroke-linejoin="round"
+                   aria-hidden="true" focusable="false">
+                <path d="M12 3l7 3v6c0 4.2-3 7.4-7 9-4-1.6-7-4.8-7-9V6l7-3z"/>
+                <path d="M9 12l2 2 4-4"/>
+              </svg>
+              Stadium Guide &amp; Policies
+            </h3>
+            <p>Clear-bag policy, prohibited items, gate times, and security screening explained.</p>
+            <a class="btn" href="stadium.html">View policies</a>
+          </article>
+
+          <!-- Card icons are inline SVG, decorative and aria hidden, so CSS
+               can tint them via currentColor. -->
+          <!-- Transportation card, decorative parking icon, aria hidden -->
+          <article class="card">
+            <h3><svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M9 17V7h3.5a3 3 0 0 1 0 6H9"/></svg> Transportation &amp; Parking</h3>
+            <p>Parking lots, prices, accessible options, and Valley Metro light rail routes to campus.</p>
+            <a class="btn" href="transportation.html">Plan your trip</a>
+          </article>
+
+          <!-- Schedule card, decorative ticket icon, aria hidden -->
+          <article class="card">
+            <h3><svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h16v3a2 2 0 0 0 0 4v3H4v-3a2 2 0 0 0 0-4V6z"/><path d="M15 6v12" stroke-dasharray="2 2"/></svg> Fall Schedule</h3>
+            <p>Home and away matchups with dates and kickoff times for the season.</p>
+            <a class="btn" href="schedule.html">See the schedule</a>
+          </article>
+
+          <!-- Traditions card, decorative star icon, aria hidden -->
+          <article class="card">
+            <h3><svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 17.8 6.8 19.2l1-5.8L3.5 9.2l5.9-.9L12 3z"/></svg> Gameday Traditions</h3>
+            <p>From the Curtain of Distraction to Tillman Tunnel learn the rituals that make it special.</p>
+            <a class="btn" href="traditions.html">Explore traditions</a>
+          </article>
+
+          <!-- FAQ card, decorative question bubble icon, aria hidden -->
+          <article class="card">
+            <h3><svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 2h18v16H8l-4 4V2z"/><path d="M9.3 8a2.7 2.7 0 0 1 5.2 1c0 1.8-2.5 2-2.5 3.2"/><path d="M12 14.5h.01"/></svg> FAQ &amp; Contact</h3>
+            <p>Common questions about tickets, re-entry, weather, and how to reach us.</p>
+            <a class="btn" href="faq.html">Get answers</a>
+          </article>
+
+          <!-- First time visitor card, decorative map pin icon, aria hidden -->
+          <article class="card">
+            <h3><svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 21s7-6.3 7-11a7 7 0 0 0-14 0c0 4.7 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg> First Time in Tempe?</h3>
+            <p>Start with the Stadium Guide, then check Transportation to pick parking or the light rail.</p>
+            <a class="btn" href="stadium.html">Start here</a>
+          </article>
+        </div>
+      </section>
+
+      <!-- Gameday at a glance stat grid, auto fill and subgrid -->
+      <section aria-labelledby="glance-title">
+        <h2 class="section-title" id="glance-title">Gameday at a Glance</h2>
+        <p class="lede">The numbers fans ask about most, before they even leave the house.</p>
+
+        <dl class="stat-grid">
+          <div class="stat">
+            <dt>Clear-bag limit</dt>
+            <dd>12" x 6" x 12"</dd>
+          </div>
+          <div class="stat">
+            <dt>Gates open</dt>
+            <dd>90 min before kickoff</dd>
+          </div>
+          <div class="stat">
+            <dt>Light rail stop</dt>
+            <dd>Veterans Way / College Ave</dd>
+          </div>
+          <div class="stat">
+            <dt>Closest lots</dt>
+            <dd>Packard &amp; Apache</dd>
+          </div>
+        </dl>
+      </section>
+
+      <!-- About -->
+      <section aria-labelledby="about-title">
+        <h2 class="section-title" id="about-title">Why This Hub Exists</h2>
+        <p class="lede">Gameday logistics for ASU football are usually scattered across five different sites. This hub pulls the essentials security rules, parking, transit, and schedules into one lean, fast loading resource built for students, alumni, local fans, and visitors heading to Mountain America Stadium.</p>
+
+        <!-- Spotlight container query block. Side by side in a wide column,
+             stacks in a narrow one. It responds to its container, not the
+             screen. -->
+        <div class="spotlight-wrap">
+          <div class="spotlight">
+            <!-- Spotlight photo of empty seats. The text beside it makes the
+                 point, so the alt stays short. Same picture setup, WebP
+                 first with a JPEG fallback, and
+                 width, height, and aspect ratio hold the space. Credited below. -->
+            <figure class="spotlight-figure">
+              <picture>
+                <source type="image/webp"
+                        srcset="images/stadium-seats-400.webp 400w,
+                                images/stadium-seats-640.webp 640w,
+                                images/stadium-seats-900.webp 900w"
+                        sizes="(min-width: 30rem) 260px, 90vw">
+                <img class="spotlight-media"
+                     src="images/stadium-seats-400.jpg"
+                     srcset="images/stadium-seats-400.jpg 400w,
+                             images/stadium-seats-640.jpg 640w,
+                             images/stadium-seats-900.jpg 900w"
+                     sizes="(min-width: 30rem) 260px, 90vw"
+                     alt="Rows of empty stadium seats sweeping up toward the upper deck on a bright day."
+                     width="900" height="600" loading="lazy" decoding="async">
+              </picture>
+              <figcaption class="media-credit media-credit--spotlight">
+                Photo by
+                <a href="https://unsplash.com/photos/empty-stadium-seats-in-a-stadium-Krst9YbAQnQ" rel="noopener noreferrer" target="_blank">Emily Dill Strock via Unsplash<span class="sr-only"> (opens in a new tab)</span></a>
+              </figcaption>
+            </figure>
+            <div class="spotlight-body">
+              <h3>First time at Mountain America Stadium?</h3>
+              <p>Start with the clear bag rules and gate times so you know what makes it through security and when the gates open. Next, pick your route in, whether that is parking on site or hopping the light rail from downtown Tempe or Mesa. Check where your gate is and what is allowed inside so there are no surprises at the checkpoint. Spending five minutes here saves a scramble at the gate and gets you to your seat, relaxed and ready, before kickoff.</p>
+              <a class="btn" href="stadium.html">Read the stadium guide</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <!-- Footer logo, larger copy of the header trident -->
+          <h2 class="footer-brand">
+            <svg class="footer-logo" viewBox="-6 -8 36 36" fill="none" stroke="currentColor"
+                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                 aria-hidden="true" focusable="false">
+              <circle cx="12" cy="10" r="16"/>
+              <path d="M4.5 4 L7.5 4 L6 1 Z"/>
+              <path d="M10.5 3 L13.5 3 L12 0 Z"/>
+              <path d="M16.5 4 L19.5 4 L18 1 Z"/>
+              <path d="M6 4v5M12 3v6M18 4v5"/>
+              <path d="M6 9a6 6 0 0 0 12 0"/>
+              <path d="M12 9v11"/>
+            </svg>
+            Sun Devils Gameday Hub
+          </h2>
+          <p>A community resource for ASU football gameday in Tempe, Arizona.</p>
+        </div>
+        <!-- Footer nav -->
+        <nav aria-label="Footer">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="traditions.html">Gameday Traditions</a></li>
+            <li><a href="stadium.html">Stadium Guide &amp; Policies</a></li>
+            <!-- Transportation & Parking -->
+            <li><a href="transportation.html">Transportation &amp; Parking</a></li>
+            <li><a href="schedule.html">Fall Schedule</a></li>
+            <li><a href="faq.html">FAQ &amp; Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+      <!-- Disclaimer -->
+      <p class="disclaimer">
+        This is a student capstone project for educational purposes only. It is not affiliated with, endorsed by, or an official site of Arizona State University or Sun Devil Athletics. Always confirm policies, schedules, and parking on official sources before gameday.
+      </p>
+    </div>
+  </footer>
+</body>
+</html>
